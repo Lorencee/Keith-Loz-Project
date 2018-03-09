@@ -8,6 +8,7 @@ public class Player_Follow : MonoBehaviour
     public float smooth;
     public float zoomOutFOV;
     public float zoomInFOV;
+    public Camera PlayerCam;
 
     public Character_Control ZoomState;
     private float offsetX;
@@ -19,6 +20,8 @@ public class Player_Follow : MonoBehaviour
     private float CharZ;
     private float currentFOV;
 
+    
+
 
     bool zoomState;
 
@@ -29,16 +32,16 @@ public class Player_Follow : MonoBehaviour
     void Start()
     {
 
-        offsetX = Camera.main.transform.position.x - transform.position.x;
-        offsetY = Camera.main.transform.position.y - transform.position.y;
-        offsetZ = Camera.main.transform.position.z - transform.position.z;
+        offsetX = PlayerCam.transform.position.x - transform.position.x;
+        offsetY = PlayerCam.transform.position.y - transform.position.y;
+        offsetZ = PlayerCam.transform.position.z - transform.position.z;
 
         CharX = transform.position.x;
         CharY = transform.position.y;
         CharZ = transform.position.z;
 
         zoomState = ZoomState.Zoom_State;
-        zoomInFOV = Camera.main.fieldOfView;
+        zoomInFOV = PlayerCam.fieldOfView;
 
 
     }
@@ -47,8 +50,8 @@ public class Player_Follow : MonoBehaviour
     void LateUpdate()
     {
 
-        currentFOV = Camera.main.fieldOfView;
-        Camera.main.transform.rotation = Quaternion.Euler(90, 0, 0);
+        currentFOV = PlayerCam.fieldOfView;
+        PlayerCam.transform.rotation = Quaternion.Euler(90, 0, 0);
 
 
         if (zoomState == true)
@@ -58,13 +61,13 @@ public class Player_Follow : MonoBehaviour
 
                 if (currentFOV < zoomOutFOV)
                 {
-                    Camera.main.fieldOfView -= (-smooth * Time.deltaTime);
+                    PlayerCam.fieldOfView -= (-smooth * Time.deltaTime);
                 }
                 else
                 {
                     if (currentFOV >= zoomOutFOV)
                     {
-                        Camera.main.fieldOfView = zoomOutFOV;
+                        PlayerCam.fieldOfView = zoomOutFOV;
                     }
                 }
             }
@@ -77,14 +80,14 @@ public class Player_Follow : MonoBehaviour
 
                 if (currentFOV > zoomInFOV)
                 {
-                    Camera.main.fieldOfView += (-smooth * Time.deltaTime);
+                    PlayerCam.fieldOfView += (-smooth * Time.deltaTime);
                 }
                 else
                 {
 
                     if (currentFOV <= zoomInFOV)
                     {
-                        Camera.main.fieldOfView = zoomInFOV;
+                        PlayerCam.fieldOfView = zoomInFOV;
                     }
                 }
             }
@@ -96,10 +99,10 @@ public class Player_Follow : MonoBehaviour
         Char.y = transform.position.y + offsetY;
         Char.z = transform.position.z /*+ offsetZ*/;
 
-
+        Debug.Log(offsetY);
         float centreY = transform.position.y - transform.position.y;
 
-        Camera.main.transform.position = Char;
+        PlayerCam.transform.position = Char;
 
 
     }

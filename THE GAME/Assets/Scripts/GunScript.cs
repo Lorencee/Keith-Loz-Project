@@ -12,6 +12,7 @@ public class GunScript : MonoBehaviour {
     public Accuracy Acc;
     public Vector3 direction;
     public RaycastHit[] hits;
+    public Animator anim;
 
     public Camera Raycast;
     public AudioSource Audio;
@@ -64,10 +65,20 @@ public class GunScript : MonoBehaviour {
         }
         if (Input.GetButtonDown("Reload"))
         {
-            if (Ammo == 0) { Ammo = MaxAmmo; }
+            anim.SetBool("Reload", true);
+         
+            if (Ammo == 0)
+            {
+
+                Ammo = MaxAmmo;
+                
+
+                
+            }
             else { Ammo = MaxAmmo +1; }
             
         }
+      
 
     }
 

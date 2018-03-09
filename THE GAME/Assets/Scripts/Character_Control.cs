@@ -40,6 +40,7 @@ public class Character_Control : MonoBehaviour {
 
     void FixedUpdate()
     {
+   
         Zoom_Press = Input.GetButtonDown("Fire1");
         if (Zoom_Press == true)
         {
