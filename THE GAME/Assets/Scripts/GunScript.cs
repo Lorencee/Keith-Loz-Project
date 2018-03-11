@@ -46,6 +46,7 @@ public class GunScript : MonoBehaviour {
             if (Ammo > 0)
             {
                 Ammo -= 1;
+                
                 Shoot();
 
             }

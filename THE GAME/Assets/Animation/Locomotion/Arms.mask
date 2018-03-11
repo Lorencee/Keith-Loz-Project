@@ -5,7 +5,7 @@ AvatarMask:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: LeftArm
+  m_Name: Arms
   m_Mask: 00000000010000000000000000000000000000000100000001000000010000000100000000000000000000000000000000000000
   m_Elements:
   - m_Path: 
@@ -169,4 +169,4 @@ AvatarMask:
   - m_Path: metarig/hips/thigh.R/shin.R/heel.R/heel.02.R/heel.02.R_end
     m_Weight: 0
   - m_Path: Plane
-    m_Weight: 1
+    m_Weight: 0
