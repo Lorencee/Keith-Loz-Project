@@ -2,28 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mousefollow : MonoBehaviour {
+public class Mousefollow : MonoBehaviour
+{
 
-
+    public GameObject RaycastPos;
+    public GameObject Char;
 
     Vector3 MousePosition;
-    public Character_Control CharLook;
-    // Use this for initialization
-    void Start () {
-        MousePosition = CharLook.targetPoint;
-        transform.position = MousePosition;
-       
+    Vector3 ChartoRayoffset;
 
+    Vector3 Offset;
+    // Use this for initialization
+    void Start()
+    {
+        ChartoRayoffset = RaycastPos.transform.position - Char.transform.position;
+        MousePosition = Input.mousePosition;
         Cursor.visible = false;
-        
+        //Debug.Log(RaycastPos.transform.position);
 
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-        MousePosition = CharLook.targetPoint;
-        transform.position= MousePosition;
-		
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        //Debug.Log(RaycastPos.transform.position);
+
+        MousePosition = Input.mousePosition + ChartoRayoffset;
+
+
+        transform.position = MousePosition;
+
+    }
 }
