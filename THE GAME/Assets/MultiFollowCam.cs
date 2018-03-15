@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MultiFollowCam : MonoBehaviour {
+public class MultiFollowCam : MonoBehaviour
+{
     public List<Transform> targets;
 
     public Vector3 offset;
@@ -13,35 +14,36 @@ public class MultiFollowCam : MonoBehaviour {
     float getGreatestDistance;
     private Vector3 velocity;
     private Camera cam;
+    public AnimationCurve Zoomcurve;
 
-	void Start()
+    void Start()
     {
         cam = GetComponent<Camera>();
     }
-	void LateUpdate ()
+    void LateUpdate()
     {
         if (targets.Count == 0)
         { return; }
         move();
         Zoom();
-	}
+    }
     void Zoom()
     {
-        if (getGreatestDistanceX()>=getGreatestDistanceY())
+        if (getGreatestDistanceX() >= getGreatestDistanceZ())
         {
             getGreatestDistance = getGreatestDistanceX();
         }
-        if(getGreatestDistanceY() > getGreatestDistanceX())
+        if (getGreatestDistanceZ() > getGreatestDistanceX())
         {
-            getGreatestDistance = getGreatestDistanceY();
+            getGreatestDistance = getGreatestDistanceZ();
         }
         Debug.Log(getGreatestDistance);
-        
-        float newZoom = Mathf.Lerp(maxFOV, minFOV, getGreatestDistance / ZoomLimiter);
-        Camera.main.fieldOfView =Mathf.Lerp(cam.fieldOfView, newZoom, Time.deltaTime);
+
+        float newZoom =Mathf.Clamp(getGreatestDistance*10, minFOV,maxFOV);
+        Camera.main.fieldOfView = Mathf.Lerp(cam.fieldOfView, newZoom, Time.deltaTime);
 
     }
-    float  getGreatestDistanceX()
+    float getGreatestDistanceX()
     {
 
         var bounds = new Bounds(targets[0].position, Vector3.zero);
@@ -51,7 +53,7 @@ public class MultiFollowCam : MonoBehaviour {
         }
         return bounds.size.x;
     }
-    float getGreatestDistanceY()
+    float getGreatestDistanceZ()
     {
 
         var bounds = new Bounds(targets[0].position, Vector3.zero);
@@ -59,7 +61,7 @@ public class MultiFollowCam : MonoBehaviour {
         {
             bounds.Encapsulate(targets[i].position);
         }
-        return bounds.size.y;
+        return bounds.size.z;
     }
     void move()
     {
@@ -77,7 +79,7 @@ public class MultiFollowCam : MonoBehaviour {
         }
 
         var bounds = new Bounds(targets[0].position, Vector3.zero);
-        for ( int i =0; i < targets.Count; i++)
+        for (int i = 0; i < targets.Count; i++)
         {
             bounds.Encapsulate(targets[i].position);
         }
