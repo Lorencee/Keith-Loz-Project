@@ -355,6 +355,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114497591052717260, guid: 5dd1ba366e4ec064c9e6bc93e55f3b40,
+        type: 2}
+      propertyPath: CameraPositions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114497591052717260, guid: 5dd1ba366e4ec064c9e6bc93e55f3b40,
+        type: 2}
+      propertyPath: CameraRotations.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4236642209958276, guid: 5dd1ba366e4ec064c9e6bc93e55f3b40, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -390,12 +400,12 @@ Prefab:
     - target: {fileID: 114275101946888242, guid: 5dd1ba366e4ec064c9e6bc93e55f3b40,
         type: 2}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114275101946888242, guid: 5dd1ba366e4ec064c9e6bc93e55f3b40,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1721987808825212, guid: 5dd1ba366e4ec064c9e6bc93e55f3b40, type: 2}
       propertyPath: m_IsActive
@@ -409,6 +419,36 @@ Prefab:
         type: 2}
       propertyPath: move_speed
       value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 114497591052717260, guid: 5dd1ba366e4ec064c9e6bc93e55f3b40,
+        type: 2}
+      propertyPath: CameraRotations.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114497591052717260, guid: 5dd1ba366e4ec064c9e6bc93e55f3b40,
+        type: 2}
+      propertyPath: offsetAngle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114497591052717260, guid: 5dd1ba366e4ec064c9e6bc93e55f3b40,
+        type: 2}
+      propertyPath: offsetAngle.x
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 114497591052717260, guid: 5dd1ba366e4ec064c9e6bc93e55f3b40,
+        type: 2}
+      propertyPath: offsetAngle.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 114497591052717260, guid: 5dd1ba366e4ec064c9e6bc93e55f3b40,
+        type: 2}
+      propertyPath: offset.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114497591052717260, guid: 5dd1ba366e4ec064c9e6bc93e55f3b40,
+        type: 2}
+      propertyPath: offset.z
+      value: -10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5dd1ba366e4ec064c9e6bc93e55f3b40, type: 2}

@@ -5,8 +5,11 @@ using UnityEngine;
 public class MultiFollowCam : MonoBehaviour
 {
     public List<Transform> targets;
+    public Vector3[] CameraPositions;
+    public Quaternion[] CameraRotations;
 
     public Vector3 offset;
+    public Quaternion offsetAngle;
     public float smooth;
     public float minFOV;
     public float maxFOV;
@@ -15,9 +18,16 @@ public class MultiFollowCam : MonoBehaviour
     private Vector3 velocity;
     private Camera cam;
     public AnimationCurve Zoomcurve;
+    int i = 0;
 
     void Start()
     {
+        CameraPositions[0] = offset;
+        CameraPositions[1] = new Vector3(0,offset.y,-offset.z);
+        CameraRotations[0] = offsetAngle;
+        CameraRotations[1].x = offsetAngle.x;
+        CameraRotations[1].y = -offsetAngle.y;
+        CameraRotations[1].z = -offsetAngle.z;
         cam = GetComponent<Camera>();
     }
     void LateUpdate()
@@ -26,6 +36,19 @@ public class MultiFollowCam : MonoBehaviour
         { return; }
         move();
         Zoom();
+       
+        
+        if (Input.GetButton("Camera Switch") == true)
+        {
+            i++;
+            if (i > 1) i = 0;
+            
+            transform.position = Vector3.SmoothDamp(transform.position, CameraPositions[i], ref velocity, smooth);
+            Quaternion target = Quaternion.Euler(CameraRotations[i].x, targets[0].rotation.y, CameraRotations[i].z);
+            transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime );
+        }
+
+
     }
     void Zoom()
     {
@@ -37,10 +60,10 @@ public class MultiFollowCam : MonoBehaviour
         {
             getGreatestDistance = getGreatestDistanceZ();
         }
-        Debug.Log(getGreatestDistance);
+       // Debug.Log(getGreatestDistance);
 
         float newZoom =Mathf.Clamp(getGreatestDistance*10, minFOV,maxFOV);
-        Camera.main.fieldOfView = Mathf.Lerp(cam.fieldOfView, newZoom, Time.deltaTime);
+        Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, newZoom, Time.deltaTime);
 
     }
     float getGreatestDistanceX()
