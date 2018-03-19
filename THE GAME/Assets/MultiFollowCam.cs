@@ -34,18 +34,18 @@ public class MultiFollowCam : MonoBehaviour
     {
         if (targets.Count == 0)
         { return; }
-        move();
-        Zoom();
+      //  move();
+      //  Zoom();
        
         
-        if (Input.GetButton("Camera Switch") == true)
+        if (Input.GetButtonDown("Camera Switch") == true)
         {
             i++;
             if (i > 1) i = 0;
             
-            transform.position = Vector3.SmoothDamp(transform.position, CameraPositions[i], ref velocity, smooth);
-            Quaternion target = Quaternion.Euler(CameraRotations[i].x, targets[0].rotation.y, CameraRotations[i].z);
-            transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime );
+           // transform.position = Vector3.SmoothDamp(transform.position, CameraPositions[i], ref velocity, smooth);
+           // Quaternion target = Quaternion.Euler(CameraRotations[0].x, targets[0].rotation.y, targets[0].rotation.z);
+            transform.RotateAround(targets[0].position, Vector3.up, 20 );
         }
 
 
