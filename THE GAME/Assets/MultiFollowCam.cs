@@ -41,12 +41,12 @@ public class MultiFollowCam : MonoBehaviour
         
         if (targets.Count == 0)
         { return; }
-        // move();
-        //  Zoom();
+         move();
+         //Zoom();
 
-        Debug.Log(targets[0].eulerAngles.y);
+        //Debug.Log(targets[0].eulerAngles.y);
 
-        if (Input.GetButton("Camera Switch") == true)
+       /* if (Input.GetButton("Camera Switch") == true)
         {
             float CharRotation = targets[0].eulerAngles.y;
            float Y = CharRotation - LastRotation;
@@ -60,7 +60,7 @@ public class MultiFollowCam : MonoBehaviour
             
             transform.RotateAround(targets[0].position, Vector3.up, Y);
             LastRotation = CharRotation;
-        }
+        }*/
 
         
     }
@@ -106,8 +106,8 @@ public class MultiFollowCam : MonoBehaviour
     {
 
         Vector3 centerPoint = GetCenter();
-        Vector3 newPos =new Vector3(centerPoint.y + offset.y, Mathf.Clamp(centerPoint.x + offset.x, -Moveoffset, Moveoffset), Mathf.Clamp(centerPoint.z + offset.z, -Moveoffset, Moveoffset));
-
+        // Vector3 newPos =new Vector3(centerPoint.y + offset.y, Mathf.Clamp(centerPoint.x + offset.x, -Moveoffset, Moveoffset), Mathf.Clamp(centerPoint.z + offset.z, -Moveoffset, Moveoffset));
+        Vector3 newPos = centerPoint + offset;
         transform.position = Vector3.SmoothDamp(transform.position, newPos, ref velocity, smooth);
     }
     Vector3 GetCenter()
@@ -118,7 +118,7 @@ public class MultiFollowCam : MonoBehaviour
         }
 
         var bounds = new Bounds(targets[0].position, Vector3.zero);
-        bounds.SetMinMax(MinBounds,MaxBounds);
+       // bounds.SetMinMax(MinBounds,MaxBounds);
         for (int i = 0; i < targets.Count; i++)
         {
             bounds.Encapsulate(targets[i].position);

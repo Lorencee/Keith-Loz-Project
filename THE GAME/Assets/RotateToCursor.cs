@@ -28,7 +28,7 @@ public class RotateToCursor : MonoBehaviour {
         float step = speed * Time.deltaTime;
 
         Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
-        Debug.Log(transform.position + newDir);
+        //Debug.Log(transform.position + newDir);
 
         // Move our position a step closer to the target.
         transform.rotation = Quaternion.LookRotation(newDir);

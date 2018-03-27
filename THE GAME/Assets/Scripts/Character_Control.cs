@@ -139,7 +139,7 @@ public class Character_Control : MonoBehaviour {
      void ConverMoveInput()
     {
         Vector3 localMove = transform.InverseTransformDirection(moveInput);
-       // Debug.Log(localMove);
+        Debug.Log(localMove);
         turnAmount = localMove.x;
         forwardAmount = localMove.z;
     }
