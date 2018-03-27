@@ -94,6 +94,7 @@ public class Character_Control : MonoBehaviour {
 
         // Generate a plane that intersects the transform's position with an upwards normal.
         Plane playerPlane = new Plane(Vector3.up, transform.position);
+        
 
         // Generate a ray from the cursor position
         Vector3 mousePos;

@@ -10,13 +10,11 @@ public class Mousefollow : MonoBehaviour
 
 
     Vector3 MousePosition;
-    Vector3 ChartoRayoffset;
 
     Vector3 Offset;
     // Use this for initialization
     void Start()
     {
-        ChartoRayoffset = RaycastPos.transform.position - Char.transform.position;
         MousePosition = Input.mousePosition;
         Cursor.visible = false;
         //Debug.Log(RaycastPos.transform.position);
@@ -28,7 +26,7 @@ public class Mousefollow : MonoBehaviour
     {
         //Debug.Log(RaycastPos.transform.position);
 
-        MousePosition = Input.mousePosition + ChartoRayoffset;
+        MousePosition = Input.mousePosition;
 
 
         transform.position = MousePosition;

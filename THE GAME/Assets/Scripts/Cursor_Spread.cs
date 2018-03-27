@@ -19,7 +19,7 @@ public class Cursor_Spread : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Accuracy = 990 - Acc.AccuracyVal * 1000;
+        Accuracy = 9.9f - Acc.AccuracyVal * 10f;
 
         
 
@@ -27,24 +27,24 @@ public class Cursor_Spread : MonoBehaviour {
         {
             if (Positive == true)
             {
-               transform.localPosition = new Vector3(0, Accuracy, 0);
+               transform.localPosition = new Vector3(0, Accuracy + 1, 0);
 
             }
             else
             {
-                transform.localPosition = new Vector3(0, -Accuracy, 0);
+                transform.localPosition = new Vector3(0, -Accuracy - 1, 0);
             }
 
         }
         else
             if (Positive == true)
             {
-                transform.localPosition = new Vector3(Accuracy, 0, 0);
+                transform.localPosition = new Vector3(Accuracy + 1, 0, 0);
 
             }
             else
             {
-                transform.localPosition = new Vector3(-Accuracy, 0, 0);
+                transform.localPosition = new Vector3(-Accuracy - 1, 0, 0);
             }
     }
 }
