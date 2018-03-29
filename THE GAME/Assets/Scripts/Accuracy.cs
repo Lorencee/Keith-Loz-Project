@@ -44,15 +44,7 @@ public class Accuracy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
-        
-        if (ZoomState.Zoom_State == true)
-        {
-            Min_Accuracy = MaxMinAccuracy; 
-        }
-        else
-        {
-            Min_Accuracy = initMinAccuracy;
-        }
+       
 
         Recovery = RecoveryCurve.Evaluate(RecoveryCurvePOS);
         AccuracyVal = Mathf.Clamp(i, Min_Accuracy, Max_Accuracy);

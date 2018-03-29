@@ -40,7 +40,7 @@ public class Player_Follow : MonoBehaviour
         CharY = transform.position.y;
         CharZ = transform.position.z;
 
-        zoomState = ZoomState.Zoom_State;
+        
         zoomInFOV = PlayerCam.fieldOfView;
 
 
@@ -54,46 +54,7 @@ public class Player_Follow : MonoBehaviour
         PlayerCam.transform.rotation = Quaternion.Euler(90, 0, 0);
 
 
-        if (zoomState == true)
-        {
-            if (currentFOV != zoomOutFOV)
-            {
-
-                if (currentFOV < zoomOutFOV)
-                {
-                    PlayerCam.fieldOfView -= (-smooth * Time.deltaTime);
-                }
-                else
-                {
-                    if (currentFOV >= zoomOutFOV)
-                    {
-                        PlayerCam.fieldOfView = zoomOutFOV;
-                    }
-                }
-            }
-        }
-
-        if (zoomState == false)
-        {
-            if (currentFOV != zoomInFOV)
-            {
-
-                if (currentFOV > zoomInFOV)
-                {
-                    PlayerCam.fieldOfView += (-smooth * Time.deltaTime);
-                }
-                else
-                {
-
-                    if (currentFOV <= zoomInFOV)
-                    {
-                        PlayerCam.fieldOfView = zoomInFOV;
-                    }
-                }
-            }
-        }
-
-        zoomState = ZoomState.Zoom_State;
+      
 
         Char.x = transform.position.x /*+ offsetX*/;
         Char.y = transform.position.y + offsetY;

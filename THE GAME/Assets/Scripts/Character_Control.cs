@@ -8,9 +8,6 @@ public class Character_Control : MonoBehaviour {
     public float Look_speed;
     public float move_speed;
     public Mousefollow mouse;
-    public bool Zoom_Press;
-    public bool Zoom_State;
-    public float WalkModifier;
 
     public Transform Cam;
     public Vector3 CamForward;
@@ -32,33 +29,11 @@ public class Character_Control : MonoBehaviour {
 
     public Vector3 Move_speed { get; private set; }
 
-    void Start()
-    {
-        Zoom_Press = false;
-        Zoom_State = false;
-    }
 
     void FixedUpdate()
     {
    
-        Zoom_Press = Input.GetButtonDown("Fire1");
-        if (Zoom_Press == true)
-        {
-            if(Zoom_State == false)
-            {
-               
-                Zoom_State = true;
-                move_speed = move_speed * WalkModifier;
-            }
-            else
-            {
-               
-                Zoom_State = false;
-                move_speed = move_speed / WalkModifier;
-            }
-
-            Debug.Log(Zoom_State);
-        }
+       
 
 
         float horizontal = Input.GetAxis("Horizontal");
@@ -87,10 +62,14 @@ public class Character_Control : MonoBehaviour {
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         //moveDirection = transform.TransformDirection(moveDirection);
         //Debug.Log(moveDirection);
-        moveDirection *= move_speed;
+        
 
-        moveDirection.y -= gravity * Time.deltaTime;
-        Rigidbod.AddForce(moveDirection * Time.deltaTime);
+        
+
+        move *= move_speed;
+
+        move.y -= gravity * Time.deltaTime;
+        Rigidbod.AddForce(move * Time.deltaTime);
 
         // Generate a plane that intersects the transform's position with an upwards normal.
         Plane playerPlane = new Plane(Vector3.up, transform.position);
