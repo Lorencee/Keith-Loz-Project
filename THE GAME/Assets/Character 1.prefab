@@ -3556,9 +3556,6 @@ MonoBehaviour:
   Look_speed: 20
   move_speed: 1000
   mouse: {fileID: 114685310530252782}
-  Zoom_Press: 0
-  Zoom_State: 0
-  WalkModifier: 1.5
   Cam: {fileID: 4669634550491314}
   CamForward: {x: 0, y: 0, z: 0}
   anim: {fileID: 95586640732245334}
